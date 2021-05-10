@@ -25,8 +25,8 @@ final class ViewController: UIViewController {
     flowLayout.minimumLineSpacing = 16
     flowLayout.minimumInteritemSpacing = 16
     flowLayout.scrollDirection = .horizontal
-    flowLayout.itemSize = CGSize(width: screenSize.width - 40, height: screenSize.width - 40)
-//    flowLayout.sectionInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
+    flowLayout.itemSize = CGSize(width: screenSize.width - 50, height: screenSize.width - 50)
+    
     return flowLayout
   }()
   
@@ -42,17 +42,17 @@ final class ViewController: UIViewController {
     collectionView.setCollectionViewLayout(flowLayout, animated: false)
     collectionView.delegate = self
     collectionView.dataSource = self
-//    collectionView.isPagingEnabled = false
+    collectionView.isPagingEnabled = false
     collectionView.backgroundColor = .clear
     collectionView.layer.masksToBounds = false
     collectionView.register(DynamicCell.self, forCellWithReuseIdentifier: DynamicCell.identifier)
-    
+    collectionView.contentInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
     collectionView.decelerationRate = .fast
     
     view.addSubview(collectionView)
     collectionView.snp.makeConstraints {
       $0.top.equalTo(view.safeAreaLayoutGuide)
-      $0.leading.trailing.equalToSuperview().inset(20)
+      $0.leading.trailing.equalToSuperview()
       $0.height.equalTo(view.snp.width).offset(-40)
     }
   }
@@ -73,11 +73,11 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate, 
     let image = item[indexPath.item]
     
     if image.size.width > image.size.height {
-      return CGSize(width: view.frame.width - 40, height: (view.frame.width - 40) * 0.5625)
+      return CGSize(width: view.frame.width - 50, height: (view.frame.width - 50) * 0.5625)
     } else if image.size.width < image.size.height {
-      return CGSize(width: (view.frame.width - 40) * 0.8, height: view.frame.width - 40)
+      return CGSize(width: (view.frame.width - 50) * 0.8, height: view.frame.width - 50)
     } else {
-      return CGSize(width: view.frame.width - 40, height: view.frame.width - 40)
+      return CGSize(width: view.frame.width - 50, height: view.frame.width - 50)
     }
   }
 }

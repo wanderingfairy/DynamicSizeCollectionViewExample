@@ -19,7 +19,6 @@ class DynamicCell: UICollectionViewCell {
   override init(frame: CGRect) {
     super.init(frame: frame)
     self.layer.masksToBounds = false
-    setupUI()
   }
   
   required init?(coder: NSCoder) {
@@ -40,6 +39,7 @@ class DynamicCell: UICollectionViewCell {
   
   func configure(image: UIImage) {
     
+    setupUI()
     croppedImageView.image = image
     
     let width = image.size.width
