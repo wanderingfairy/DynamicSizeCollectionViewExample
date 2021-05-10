@@ -1,0 +1,6 @@
+framework module Pods_DynamicCellCollectionViewExample {
+  umbrella header "Pods-DynamicCellCollectionViewExample-umbrella.h"
+
+  export *
+  module * { export * }
+}
